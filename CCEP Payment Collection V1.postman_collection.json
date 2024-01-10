@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "0981f3b3-2e12-436b-aee7-0ecc22a025f3",
-		"name": "CCEP Payment Collection",
+		"_postman_id": "2a778f3c-9ddc-4d47-864b-9c2789998b45",
+		"name": "CCEP Payment Collection V1",
+		"description": "Postman collection for payment collection demonstration. Written by Carl Newton [canewton@Cisco.com](https://mailto:canewton@Cisco.com) January 2024. Uses JDS collection authored by Arunabh Bhattacharjee at [https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json](https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json)\n\nGithub Repo: [https://github.com/canewton-ccep/PaymentCollections](https://github.com/canewton-ccep/PaymentCollections)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15314799"
 	},
@@ -2308,13 +2309,28 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
+				"key": "tokenName",
+				"value": "CCEPPaymentCollection",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://admin.webex.com/",
+				"type": "string"
+			},
+			{
 				"key": "clientSecret",
-				"value": "b4d541bf54de70747c491547eee53a9955c26e9a9f8d8b4214e0e0c163f95925",
+				"value": "{{client_secretJDS}}",
 				"type": "string"
 			},
 			{
 				"key": "clientId",
-				"value": "Ca658af221de21aa2803048226015e48a511ac5a5a914be1733f1f98c93662e9b",
+				"value": "{{client_idJDS}}",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "{{OauthURL}}",
 				"type": "string"
 			},
 			{
@@ -2330,21 +2346,6 @@
 			{
 				"key": "scope",
 				"value": "",
-				"type": "string"
-			},
-			{
-				"key": "redirect_uri",
-				"value": "https://admin.webex.com",
-				"type": "string"
-			},
-			{
-				"key": "authUrl",
-				"value": "https://webexapis.com/v1/authorize?client_id=Ca658af221de21aa2803048226015e48a511ac5a5a914be1733f1f98c93662e9b&response_type=code&redirect_uri=https%3A%2F%2Fadmin.webex.com&scope=cjp%3Auser%20spark%3Apeople_read%20cjp%3Aconfig_write%20cjp%3Aconfig%20cjp%3Aconfig_read&state=set_state_here",
-				"type": "string"
-			},
-			{
-				"key": "tokenName",
-				"value": "BoschJDS",
 				"type": "string"
 			},
 			{
@@ -2412,12 +2413,17 @@
 		},
 		{
 			"key": "identity",
-			"value": "",
+			"value": "<Used To select a contact for some JDS operations>",
 			"type": "string"
 		},
 		{
 			"key": "MockAPIID",
 			"value": "<Get From MockAPI>",
+			"type": "string"
+		},
+		{
+			"key": "OauthURL",
+			"value": "<Get From DeveloperCX>",
 			"type": "string"
 		}
 	]
