@@ -1,0 +1,381 @@
+{
+  "version": "0.0.6",
+  "appTitle": "CCEP Demo's",
+  "logo": "https://london-mailmedia.s3.amazonaws.com/5eb65906-aa26-404d-8fd7-2ddbe5f04d7e/Webex-logo-new_2369035670935337.png",
+  "dragDropEnabled": true,
+  "notificationTimer": 4,
+  "maximumNotificationCount": 3,
+  "browserNotificationTimer": 8,
+  "wxmConfigured": true,
+  "desktopChatApp": {
+    "webexConfigured": true
+},
+  "area": {
+    "headless": {
+      "id": "dw-headless",
+      "widgets": { "comp1": { "comp": "div" } },
+      "layout": { "areas": [["comp1"]], "size": { "cols": [1], "rows": [1] } }
+    },
+    "panel": {
+      "comp": "md-tabs",
+      "attributes": { "class": "widget-tabs" },
+      "children": [
+        {
+          "comp": "md-tab",
+          "attributes": { "slot": "tab", "class": "widget-pane-tab" },
+          "children": [{ "comp": "slot", "attributes": { "name": "SCREEN_POP_TAB" } }],
+          "visibility": "SCREEN_POP"
+        },
+        {
+          "comp": "md-tab-panel",
+          "attributes": { "slot": "panel", "class": "widget-pane" },
+          "children": [{ "comp": "slot", "attributes": { "name": "SCREEN_POP" } }],
+          "visibility": "SCREEN_POP"
+        },
+        {
+          "comp": "md-tab",
+          "attributes": { "slot": "tab", "class": "widget-pane-tab" },
+          "children": [{ "comp": "slot", "attributes": { "name": "IVR_TRANSCRIPT_TAB" } }],
+          "visibility": "IVR_TRANSCRIPT"
+        },
+        {
+          "comp": "md-tab-panel",
+          "attributes": { "slot": "panel", "class": "widget-pane" },
+          "children": [{ "comp": "slot", "attributes": { "name": "IVR_TRANSCRIPT" } }],
+          "visibility": "IVR_TRANSCRIPT"
+        },
+        {
+          "comp": "md-tab",
+          "attributes": { "slot": "tab" },
+          "children": [{ "comp": "slot", "attributes": { "name": "WXM_JOURNEY_TAB" } }],
+          "visibility": "WXM_JOURNEY"
+        },
+          {
+            "comp": "md-tab-panel",
+            "attributes": {
+                "slot": "panel",
+                "class": "widget-pane"
+            },
+            "children": [
+                {
+                    "comp": "customer-journey-widget",
+                    "script": "https://cjaas.cisco.com/widgets/customer-journey-9.0.0.js",
+                    "attributes": {
+                        "base-url": "https://api-jds.prod-useast1.ciscowxdap.com",
+                        "logs-on": "true",
+                        "project-id": "<<PROJECTID>>",
+                        "live-stream": "true",
+                        "icon-data-path": "https://amazon-connect-104c098076f3.s3.eu-central-1.amazonaws.com/WxCC-JDS/icons_v3.json"
+                    },
+                    "properties": {
+                        "interactionData": "$STORE.agentContact.taskSelected",
+                        "bearerToken": "$STORE.auth.accessToken",
+                        "organizationId": "<<ORGID>>"
+                    },
+                    "wrapper": {
+                        "title": "Customer Journey Widget",
+                        "maximizeAreaName": "app-maximize-area"
+                    }
+                }
+            ]
+        }, 
+
+        {
+          "comp": "md-tab",
+          "textContent": "Pay by Link",
+          "attributes": {
+            "slot": "tab", "class": "widget-pane-tab"
+          }
+          
+        },
+
+        {
+          "comp": "md-tab-panel",
+          "attributes": {
+            "slot": "panel"
+          },
+           "children": [
+        {
+          "comp": "pay-widget",
+	  "script": "https://<<GLITCHID>>.glitch.me/payment.js",
+	  "attributes":{
+	  "btncolour" : "#0045A0"
+	},
+	  "properties":  {
+	  "customerPrefix": "gen",
+	  "currentTask": "$STORE.agentContact.taskSelected",
+	  "triggerPaymentWebhookURL" : "<<TRIGGERHOOK>>",
+	  "checkPaymentSyncWebhookURL" : "<<CHECKHOOK>>",
+	  "syncWebhookKey" : "<<SYNCKEY>>",
+	  "pollInterval" : "5000",
+	  "maxAttempts" : "10"
+          }
+        }
+      ]
+        },
+        {
+          "comp": "md-tab",
+          "textContent": "Quick Message",
+          "attributes": {
+            "slot": "tab", "class": "widget-pane-tab"
+          }
+          
+        },
+        {
+          "comp": "md-tab-panel",
+          "attributes": {
+            "slot": "panel"
+          },
+           "children": [
+        {
+          "comp": "text-widget",
+	  "script": "https://<<GLITCHID>>.glitch.me/sendtext.js",
+          "attributes":{
+	     "btncolour" : "#0045A0"
+	  },	  
+          "properties":  {
+	  "currentTask": "$STORE.agentContact.taskSelected",
+	  "triggerTextSendURL" : "<<SMSSENDFLOW>>",
+      "conversationid" : "$STORE.agentContact.selectedTaskId"
+          }
+        }
+      ]
+        }
+
+      ]
+    },
+    "navigation": [
+      {
+        "nav" : {
+          "label" : "Cisco Website",
+          "icon" : "https://www.cisco.com/web/fw/i/logo-open-graph.gif",
+          "iconType" : "other",
+          "navigateTo" : "cisco",
+          "align" : "top"
+        },
+        "page" : {
+          "id" : "cisco",
+          "widgets" : {
+            "right" : {
+              "comp" : "agentx-wc-iframe",
+              "attributes" : {
+                "src" : "https://www.cisco.com/"
+              }
+            }
+          },
+          "layout" : {
+            "areas" : [
+              [
+                "right"
+              ]
+            ],
+            "size" : {
+              "cols" : [
+                1
+              ],
+              "rows" : [
+                1
+              ]
+            }
+          }
+        }
+      },
+      {
+        "nav": {
+            "label": "Facilities",
+            "icon": "stored-info",
+            "iconType": "momentum",
+            "navigateTo": "dynamic-tabs",
+            "align": "top"
+                 },    
+        "page": {
+            "id": "googlemaps",
+            "widgets": {
+                "comp1": {
+                    "comp": "md-tabs",
+                    "children": [{
+                            "comp": "md-tab",
+                            "textContent": "Google Maps",
+                            "attributes": {
+                                "slot": "tab"
+                            }
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel"
+                            },
+                            "children": [{
+                                "comp": "agentx-wc-iframe",
+                                "attributes": {
+                                "src" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.6673540982315!2d-0.4463243991928928!3d51.445902630938775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876739343a97a73%3A0xf19da3749f968!2sCisco%20Systems%2C%209-11%20New%20Square%2C%20Feltham%20TW14%208HA!5e0!3m2!1sen!2suk!4v1674471372287!5m2!1sen!2suk"
+                               }
+                            }]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "textContent": "DNA Spaces",
+                            "responsive": false,
+                            "attributes": {
+                                "slot": "tab"
+                            }
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel"
+                            },
+                            "children": [{
+                                "comp": "agentx-wc-iframe",
+                                "attributes": {
+                                    "src": "https://workspaces.dnaspaces.eu/?token=e39970bc-5ecc-4a9f-a470-16305da15934#/dashboard"
+                                }
+                            }]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "textContent": "what3words",
+                            "attributes": {
+                                "slot": "tab"
+                            }
+                        },
+                        {
+                          "comp": "md-tab-panel",
+                          "attributes": {
+                              "slot": "panel"
+                          },
+                          "children": [{
+                              "comp": "agentx-wc-iframe",
+                              "attributes": {
+                                  "src": "https://what3words.com/lion.tend.rips"
+                              }
+                          }]
+                      }
+                    ]
+                }
+            },
+            "layout": {
+                "areas": [
+                    ["comp1"]
+                ],
+                "size": {
+                    "cols": [1],
+                    "rows": [1]
+                }
+            }
+        }
+    },
+      
+      {
+            "nav" : {
+              "label" : "Frequently Asked Questions",
+              "icon" : "https://cdn.glitch.global/fd39b6b0-d610-4706-9a83-0c9b04f8712b/FAQ2.jpg?v=1648461243148",
+              "iconType" : "other",
+              "navigateTo" : "faq",
+              "align" : "top"
+            },
+            "page" : {
+              "id" : "faq",
+              "widgets" : {
+                "right" : {
+                  "comp" : "agentx-wc-iframe",
+                  "attributes" : {
+                    "src" : "https://frost-quiver-arrow.glitch.me/"
+                  }
+                }
+              },
+              "layout" : {
+                "areas" : [
+                  [
+                    "right"
+                  ]
+                ],
+                "size" : {
+                  "cols" : [
+                    1
+                  ],
+                  "rows" : [
+                    1
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "nav": {
+              "label": "Customer Journey",
+              "icon": "/app/images/wxm.bcd45cc3.svg",
+              "iconType": "other",
+              "navigateTo": "CustomNav6",
+              "align": "top"
+            },
+            "page": {
+              "id": "customNav6",
+              "widgets": {
+                "right": {
+                    "comp": "customer-journey-widget",
+                    "script": "https://cjaas.cisco.com/widgets/customer-journey-9.0.0.js",
+                    "attributes": {
+                        "base-url": "https://api-jds.prod-useast1.ciscowxdap.com",
+                        "logs-on": "true",
+                        "project-id": "<<PROJECTID>>",
+                        "icon-data-path": "https://amazon-connect-104c098076f3.s3.eu-central-1.amazonaws.com/WxCC-JDS/icons_v3.json"
+                    },
+                    "properties": {
+                        "interactionData": "$STORE.agentContact.taskSelected",
+                        "bearerToken": "$STORE.auth.accessToken",
+                        "organizationId":  "<<ORGID>>"
+                    },
+                    "wrapper": {
+                        "title": "Customer Journey Widget",
+                        "maximizeAreaName": "app-maximize-area"
+                    }
+                }
+              },
+              "layout": {
+                "areas": [["right"]],
+                "size": {
+                  "cols": [1],
+                  "rows": [1]
+                }
+              }
+            }
+          },
+          {
+            "nav": {
+              "label": "News Feed",
+              "icon": "https://news.sky.com/resources/sky-news-logo.svg?v=1",
+              "iconType": "other",
+              "navigateTo": "news",
+              "align": "top"
+            },
+            "page": {
+              "id": "news",
+              "widgets": {
+                "comp1": {
+                  "comp": "agentx-wc-iframe",
+                  "attributes": {
+                    "src": "https://www.youtube.com/embed/w9uJg68CV4g?si=jiNDeE9pMbK7FeSY"
+                  }
+                }
+              },
+              "layout": {
+                "areas": [
+                  [
+                    "comp1"
+                  ]
+                ],
+                "size": {
+                  "cols": [
+                    1
+                  ],
+                  "rows": [
+                    1
+                  ]
+                }
+              }
+            }
+          }
+        ]
+        }
+    }

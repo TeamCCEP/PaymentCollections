@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "2a778f3c-9ddc-4d47-864b-9c2789998b45",
 		"name": "CCEP Payment Collection V1",
-		"description": "Postman collection for payment collection demonstration. Written by Carl Newton [canewton@Cisco.com](https://mailto:canewton@Cisco.com) January 2024. Uses JDS collection authored by Arunabh Bhattacharjee at [https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json](https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json)\n\nGithub Repo: [https://github.com/canewton-ccep/PaymentCollections](https://github.com/canewton-ccep/PaymentCollections)",
+		"description": "Postman collection for payment collection demonstration. Written by Carl Newton [canewton@Cisco.com](https://mailto:canewton@Cisco.com) January 2024. Uses JDS collection authored by Arunabh Bhattacharjee and Barry Mclellan at [https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json](https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/customer-journey-samples/cjds-postman-example/JDS%20CiscoLive.postman_collection.json)\n\nGithub Repo: [https://github.com/canewton-ccep/PaymentCollections](https://github.com/canewton-ccep/PaymentCollections)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15314799"
 	},
@@ -2196,7 +2196,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{MockAPIID}}.mockapi.io/WXCC/collections",
+							"raw": "https://{{MockAPIID}}.mockapi.io/collections",
 							"protocol": "https",
 							"host": [
 								"{{MockAPIID}}",
@@ -2204,7 +2204,6 @@
 								"io"
 							],
 							"path": [
-								"WXCC",
 								"collections"
 							]
 						}
@@ -2226,7 +2225,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{MockAPIID}}.mockapi.io/WXCC/collections",
+							"raw": "https://{{MockAPIID}}.mockapi.io/collections",
 							"protocol": "https",
 							"host": [
 								"{{MockAPIID}}",
@@ -2234,7 +2233,6 @@
 								"io"
 							],
 							"path": [
-								"WXCC",
 								"collections"
 							]
 						}
@@ -2256,7 +2254,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{MockAPIID}}.mockapi.io/WXCC/collections",
+							"raw": "https://{{MockAPIID}}.mockapi.io/collections/1",
 							"protocol": "https",
 							"host": [
 								"{{MockAPIID}}",
@@ -2264,8 +2262,8 @@
 								"io"
 							],
 							"path": [
-								"WXCC",
-								"collections"
+								"collections",
+								"1"
 							]
 						}
 					},
@@ -2280,7 +2278,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"MobNum\": \"+447577740451\",\n    \"FirstName\": \"Carl\",\n    \"LastName\": \"Newton\",\n    \"PaymentDue\": \"199\",\n    \"DueDate\": \"1/9/2025\",\n    \"RefNum\": \"12345\"\n}",
+					"raw": "{\n    \"MobNum\": \"+12099641260\",\n    \"FirstName\": \"Carl\",\n    \"LastName\": \"Newton\",\n    \"PaymentDue\": \"199\",\n    \"DueDate\": \"1/9/2025\",\n    \"RefNum\": \"12345\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -2288,17 +2286,17 @@
 					}
 				},
 				"url": {
-					"raw": "https://hooks.uk.webexconnect.io/events/W6NHSQPVKF",
+					"raw": "https://hooks.us.webexconnect.io/events/OGWL6YI508",
 					"protocol": "https",
 					"host": [
 						"hooks",
-						"uk",
+						"us",
 						"webexconnect",
 						"io"
 					],
 					"path": [
 						"events",
-						"W6NHSQPVKF"
+						"OGWL6YI508"
 					]
 				}
 			},
