@@ -78,42 +78,7 @@
                     }
                 }
             ]
-        }, 
-
-        {
-          "comp": "md-tab",
-          "textContent": "Pay by Link",
-          "attributes": {
-            "slot": "tab", "class": "widget-pane-tab"
-          }
-          
-        },
-
-        {
-          "comp": "md-tab-panel",
-          "attributes": {
-            "slot": "panel"
-          },
-           "children": [
-        {
-          "comp": "pay-widget",
-	  "script": "https://<<GLITCHID>>.glitch.me/payment.js",
-	  "attributes":{
-	  "btncolour" : "#0045A0"
-	},
-	  "properties":  {
-	  "customerPrefix": "gen",
-	  "currentTask": "$STORE.agentContact.taskSelected",
-	  "triggerPaymentWebhookURL" : "<<TRIGGERHOOK>>",
-	  "checkPaymentSyncWebhookURL" : "<<CHECKHOOK>>",
-	  "syncWebhookKey" : "<<SYNCKEY>>",
-	  "pollInterval" : "5000",
-	  "maxAttempts" : "10"
-          }
-        }
-      ]
-        },
-        {
+        },{
           "comp": "md-tab",
           "textContent": "Quick Message",
           "attributes": {
