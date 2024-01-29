@@ -11,50 +11,6 @@
 			"name": "JDS",
 			"item": [
 				{
-					"name": "Custom WxConnect - Merge JDS Identities and Add Aliases If Required",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "key",
-								"value": "WxConnectSecretKey"
-							},
-							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"First\": \"Barry2\",\n\t\"Last\": \"McLellan2\",\n\t\"Numbers\": \"phone:13333334453,phone:+13333334453,email:4bmclellan4454@yahoo.com,email:myself@there.com,customerId:334689557617731186\"\n}"
-						},
-						"url": {
-							"raw": "https://hooks.us.webexconnect.io/events/2QF64C3V6M",
-							"protocol": "https",
-							"host": [
-								"hooks",
-								"us",
-								"webexconnect",
-								"io"
-							],
-							"path": [
-								"events",
-								"2QF64C3V6M"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create - journey-default-template2",
 					"event": [
 						{
@@ -2286,7 +2242,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://hooks.us.webexconnect.io/events/OGWL6YI508",
+					"raw": "https://hooks.us.webexconnect.io/events/{{YOURWEBHOOK}}",
 					"protocol": "https",
 					"host": [
 						"hooks",
@@ -2296,7 +2252,7 @@
 					],
 					"path": [
 						"events",
-						"OGWL6YI508"
+						"{{YOURWEBHOOK}}"
 					]
 				}
 			},
