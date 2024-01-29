@@ -1,4 +1,4 @@
-# Demo
+# Payment Collection Demo
 
 *For more demos & PoCs like this, check out our [Collab Toolbox](https://collabtoolbox.cisco.com/).
 
