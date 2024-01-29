@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Payment Page</title>
+  <!-- add the font awesome link here -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;600;700;800;900;&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- <link rel="icon"href="https://www.dhl.com/etc/clientlibs/dhl/clientlib-all/assets/favicon.ico" type="image/x-icon!"> -->
+
+  <link rel="icon" type="image/png" href="https://cdn.glitch.global/31b33669-b272-42c5-8a70-860985965ed7/Webex.jpg?v=1651047846087">
+</head>
+<body>
+  <!-- HEADER -->
+    <header>
+      <nav class="navMenu" id="myNavMenu">
+        <span style="color:blue">Webex Pay-by-Link</span>
+        <!--img id="logo" src="https://cdn.glitch.global/31b33669-b272-42c5-8a70-860985965ed7/Mastercard_logo.jpg?v=1651047943883" alt="logo"-->
+        <!--img id="smallLogo" src="https://cdn.glitch.global/31b33669-b272-42c5-8a70-860985965ed7/Mastercard_logo.jpg?v=1651047943883" alt="logo"-->
+      </nav>
+    </header>
+
+		<!-- MAIN BODY CONTAINER -->
+    <div id="container">
+    <!-- WHEN NO ORDER IS QUERIED -->
+    <div id="defaultDiv">
+      <div id="cardOverlay">
+        <div class="group">
+          <img class="heroPic" src="https://cdn.glitch.global/31b33669-b272-42c5-8a70-860985965ed7/blank.jpg?v=1651056263539" alt="Hero basket image" style="object-position: 75% 40%;">
+          <div class="card">
+            <img src="https://w7.pngwing.com/pngs/144/9/png-transparent-home-computer-icons-house-insurance-angle-building-text.png" alt="Insurance" style="width:38%;margin: 32px;">
+            <p><b>Payment Due<br> Order ID: <span id="order">#ad12345</span></b>
+            <hr style="height:6px;border:none;background-color:#D10A18">
+            Charge: <span id="charge"></span>
+            <span id="noCharge" style="display:none;">100</span></p>
+          
+            <div class="adam" !important>
+              <div style="justify-content:left">
+                <div>
+                  <label>Name<span style="color:red">*</span>
+                    <input style="width:120px;float:right;margin-right:20px" id="cardHolderName" name="cardHolderName" type="text"  aria-label="cardHolderName" autocomplete="off"   data-parsley-pattern="^[a-zA-Z\s'-]*$" data-parsley-group="cardHolderName" onblur="onFocusOut(this)" title="Name">             
+                  </label>
+                </div>
+              </div>
+              <div style="justify-content:left">
+                <div class="col-lg-5 text-right align-self-start">
+                  <label >Card Number<span style="color:red">*</span>
+                  <input type="tel" pattern="[0-9]{10}" style="width:120px;float:right;margin-right:20px" id="pan" name="pan" aria-label="pan" autocomplete="off" maxlength="19" data-parsley-luhn="16" data-parsley-cardscheme="1" data-parsley-trigger="change"   data-parsley-pattern="^([0-9]*)$" data-parsley-group="pan" onblur="onFocusOut(this)" data-parsley-minlength="12" data-parsley-minlength-message="Please enter a valid card number" title="Card Number">
+                                </label>
+                </div>
+              </div>
+              <div style="justify-content:left" >
+                  <label>Expiry Date<span style="color:red">*</span>
+                    <select id="expiryDate-month" name="expiryDate-month" type="text" class="custom-col-sm-1 custom-col-lg-1 " aria-label="expiryDate-month" autocomplete="off" data-parsley-currdate="" data-parsley-errors-container="#errors-db6zlu9iph" oninput="onUserAction(this)" required="" data-parsley-group="expiryDate-month" onblur="onFocusOut(this)" title="Expiry Date"><option value="MM">MM</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                      </select>
+                    <select id="expiryDate-year" name="expiryDate-year" type="text" class="custom-col-sm-1 custom-col-lg-1 " aria-label="expiryDate-year" autocomplete="off" data-parsley-currdate="" data-parsley-errors-container="#errors-db6zlu9iph" data-parsley-group="expiryDate-year" onblur="onFocusOut(this)" title="Expiry Date"><option value="YY">YY</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option>
+                      </select>
+                  </label>
+              </div>
+              <div style="justify-content:left">
+                <label >CVC<span style="color:red">*</span>
+                  <input type="tel" pattern="[0-9]{10}" style="width:50px;float:right;margin-right:90px" id="cvc" name="cvc" class="custom-col-sm-1 custom-col-lg-1 " aria-label="cvc" autocomplete="off" maxlength="4"  data-parsley-pattern="^([0-9]*)$" data-parsley-group="cvc" onblur="onFocusOut(this)" data-parsley-trigger="change" data-parsley-minlength="3" data-parsley-minlength-message="Please enter a valid security code" title="Security Code">
+                </label>
+              </div>
+                        
+             </div>
+
+              <p id="prePaid">&nbsp;<a href="#" id="form-enter">Pay</a></p>
+              <p id="paid" style="background-color: #007C39;color: whitesmoke;font-weight: 600;width: 100%;padding:22px;margin:6px 0;display:none;">Paid</p>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clear" style="height: 60px;"></div>
+      <br>
+      
+      <div id="preOrder">
+        <h2>Payment Due</h2>
+        <div class="text">
+          <p>If you have questions related to your payment, please use the Facebook Messenger button or QR code below to ask your questions.</p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <a id="wabutton" href="https://www.messenger.com/t/110663738074415" target="_blank"><span class="mobhide">Facebook&nbsp</span><b><i class="fab fa-facebook"></i></b></a>
+          </div>
+          <div class="column2">
+            <img src="https://cdn.glitch.global/31b33669-b272-42c5-8a70-860985965ed7/FB_FH_QR.jpg?v=1651048444885" alt="Facebook QR Code" style="width:200px;height:200px;">
+          </div>
+			  </div>
+      </div>
+      <div id="complete-message" style="display:none;">
+        <h2>Thank you</h2>
+        <div class="text">
+          <p>Thank you, your payment has been received.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="clear"></div>
+    <br>
+  <footer>
+    <span>
+      <p><b>Webex</b> by Cisco &nbsp
+      <a href="https://www.webex.com/" target="_blank"><i class="fas fa-globe"></i></a>
+      &nbsp
+      <a href="https://www.linkedin.com/company/webex/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </p>
+    </span>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="script.js"></script>
+
+  <script>
+
+//Create function which takes a string and creates a json object from it, this is query string param style. 
+function parseQueryString (queryString) {
+  var  newQueryString= queryString.replace('?','');    
+  var parsedString = '';   
+
+  console.log(queryString);
+  if(queryString.length > 2){
+    parsedString = JSON.parse('{"' + decodeURI(newQueryString).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');}  
+  return parsedString;
+}
+
+  </script>
+</body>
+</html>

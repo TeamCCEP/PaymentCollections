@@ -1,0 +1,330 @@
+/*Body Styling*/
+body {
+	font-family: 'Spartan', sans-serif;
+	color: #000000;
+  line-height: 1.6;
+  margin: 0;
+}
+
+b {
+  font-weight: 600;
+}
+
+#logo{
+  width: 400px;
+  display: block;
+  margin: 12px;
+}
+
+/*Header Styling*/
+header {
+  width: 100%;
+	margin: auto;
+  padding: 0px;
+}
+
+#container {
+	width: 100%;
+	margin: 0 auto;
+}
+ 
+.navMenu {
+  display: block;
+  justify-content:center;
+  overflow: hidden;
+  background-color:#ffffff;
+  border: grey 1px solid;
+  text-align: center;
+}
+
+#cardOverlay{
+  position: relative;
+}
+
+.heroPic{
+  max-width: 100%;
+  height: 550px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/*Text Styling*/
+h1 {
+	font-size: 250%;
+  font-weight: 300;
+}
+
+h2 {
+  padding-bottom: 8px;
+  font-weight: 600;
+  font-size: 150%;
+}
+
+h1,
+h2 {
+	color: #42145F;
+  max-width: 80%;
+  margin: auto;
+  font-weight: 900;
+}
+
+.text {
+  margin: auto;
+  max-width: 80%;
+}
+
+.card {
+  box-shadow: 0 5px 9px 0 rgba(34, 34, 34, 0.35);
+  max-width: 280px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  position: absolute;
+  bottom: -50px;
+  background: white;
+  left: 0;
+  right: 0;
+  
+}
+
+.card p {
+  margin: 0;
+}
+
+.adam {
+text-align: left;
+  margin-left: 30px;
+}
+/*Form*/
+.formBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 80%;
+}
+
+.form {
+  display: inline-flex;
+  padding: 10px;
+}
+
+#form-enter {
+  display: inline-flex;
+  text-decoration: none;
+  color: white;
+  padding: 7px 10px;
+  background-color: #42145F;
+  font-weight: 600;
+  border-radius: 2.5px;
+  margin: 10px;
+}
+
+#form-enter:hover{
+  background-color: #D10A18;
+}
+
+/*WhatsApp Buttons*/
+#wabutton{
+  border: none;
+  color: white;
+  padding: 16px 28px;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: #42145F;
+  border-radius: 21px;
+  display: inline-flex;
+  font-weight: 600;
+}
+
+#wabutton:hover{
+  background-color: #D10A18;
+}
+
+/*List Styling*/
+ol li {
+  padding-bottom: 8px;
+}
+
+ul li {
+  padding-bottom: 8px;
+}
+
+/*Image Styling*/
+img {
+	width: 100%;
+}
+
+/* Demo menu */
+* {
+  box-sizing: border-box;
+}
+
+.orderId {
+  color: #D10A18;
+  font-weight: 700;
+}
+
+.smallShow{
+    display: none;
+  }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column {
+  flex: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.column2 {
+  flex: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.clear {
+  clear:both;
+}
+
+.qrCode{
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Footer Styling*/
+footer {
+  position: bottom;
+  width: 100%;
+	margin: auto;
+  left: 0;
+  bottom: 0;
+  background: #F1F1F1;
+  padding: 10px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+footer span {
+  display: inline-block;
+  min-width: 230px;
+  margin: 10px 0 10px 0;
+  text-align: center;
+}
+footer span a {
+  text-decoration: none;
+  color: #666666;
+  transition: all 0.2s ease-in;
+}
+footer span a:hover {
+  color: #42145F;
+}
+
+/*Sizing Styling*/
+@media screen and (max-width: 1400px) {
+	.heroPic{
+    height: 420px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+	.heroPic{
+    height: 390px;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .heroPic{
+    height: 360px;
+  }
+
+  header ul {
+    padding-top:2px;
+  }
+
+  .tab {
+   display: none;
+  }
+
+  .tabcontent {
+    width: 100%;
+    height: 520px;
+  }
+
+  .smallShow{
+    display: block;
+  }
+	
+
+	h1 {
+		font-size: 195%;	
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.heroPic{
+    height: 320px;
+  }
+  
+  #logo{
+    display: none;
+  }
+
+  .navMenu {
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+  }
+
+  #smallLogo{
+    width: 220px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  header span {
+  font-size: 15px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .heroPic{
+    height: 290px;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .mobhide {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 401px) {
+  .mobShow {
+    display: none;
+  }
+}
