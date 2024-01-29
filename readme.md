@@ -24,6 +24,14 @@ Click to open the video!
     </a>
 </p>
 
+# Technical Solution Overview & Demo
+
+<p align="center">
+   <a href="https://app.vidcast.io/share/8452da44-1b66-43b0-8d54-3fddc59b5683" target="_blank">
+       <img src="Images/PayCollection_Techdemo.png" alt="Payment-Collection-Tech-Demo"  width="100%" height="100%"/>
+    </a>
+</p>
+
 ## Table of Contents
 
 [Solution Goals](#solution-goals)
