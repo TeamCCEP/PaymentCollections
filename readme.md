@@ -13,7 +13,7 @@ Everything included is for demo and Proof of Concept purposes only. Use of the s
 
 
 ## Questions
-Please contact the CCEP team at [ccep@external.cisco.com](mailto:ccep@external.cisco.com?subject=payment-collections-demo) for questions.
+Please contact the CCEP team at [ccep@cisco.com](mailto:ccep@cisco.com?subject=payment-collections-demo) for questions.
 
 ## Table of Contents
 
