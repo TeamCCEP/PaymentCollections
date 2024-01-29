@@ -179,26 +179,6 @@
                         },
                         {
                             "comp": "md-tab",
-                            "textContent": "DNA Spaces",
-                            "responsive": false,
-                            "attributes": {
-                                "slot": "tab"
-                            }
-                        },
-                        {
-                            "comp": "md-tab-panel",
-                            "attributes": {
-                                "slot": "panel"
-                            },
-                            "children": [{
-                                "comp": "agentx-wc-iframe",
-                                "attributes": {
-                                    "src": "https://workspaces.dnaspaces.eu/?token=e39970bc-5ecc-4a9f-a470-16305da15934#/dashboard"
-                                }
-                            }]
-                        },
-                        {
-                            "comp": "md-tab",
                             "textContent": "what3words",
                             "attributes": {
                                 "slot": "tab"

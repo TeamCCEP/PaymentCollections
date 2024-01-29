@@ -2114,7 +2114,7 @@
 						"header": [
 							{
 								"key": "x-token-passphrase",
-								"value": "0$R1964gceepU$hzask#a@dVNDDCuo",
+								"value": "{{X-Token-PassPhrase}}",
 								"type": "text"
 							}
 						],
@@ -2155,7 +2155,7 @@
 						"header": [
 							{
 								"key": "x-token-passphrase",
-								"value": "0$R1964gceepU$hzask#a@dVNDDCuo",
+								"value": "{{X-Token-PassPhrase}}",
 								"type": "text"
 							},
 							{
@@ -2422,6 +2422,11 @@
 		{
 			"key": "OauthURL",
 			"value": "<Get From DeveloperCX>",
+			"type": "string"
+		},
+		{
+			"key": "X-Token-PassPhrase",
+			"value": "<Get from google cloud console>",
 			"type": "string"
 		}
 	]
