@@ -1,19 +1,28 @@
-## Demo
+# Demo
 
 *For more demos & PoCs like this, check out our [Collab Toolbox](https://collabtoolbox.cisco.com/).
 
-## License
+# License
 
 All contents are licensed under the MIT license. Please see [license](LICENSE) for details.
 
 
-## Disclaimer
+# Disclaimer
 
 Everything included is for demo and Proof of Concept purposes only. Use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos.
 
 
-## Questions
+# Questions
 Please contact the CCEP team at [ccep@cisco.com](mailto:ccep@cisco.com?subject=payment-collections-demo) for questions.
+
+# Sales Play Explanation
+Click to open the video!
+
+<p align="center">
+   <a href="https://app.vidcast.io/share/8452da44-1b66-43b0-8d54-3fddc59b5683" target="_blank">
+       <img src="Images/PayCollection.png" alt="Payment-Collection-Demo"  width="100%" height="100%"/>
+    </a>
+</p>
 
 ## Table of Contents
 
