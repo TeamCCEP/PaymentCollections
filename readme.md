@@ -34,6 +34,8 @@ Click to open the video!
 
 ## Table of Contents
 
+[Change Log](#changelog)
+
 [Solution Goals](#solution-goals)
 
 [Reduce Agent & Supervisor Effort](#reduce-agent--supervisor-effort)
@@ -75,6 +77,13 @@ Click to open the video!
 [Implementation](#implementation-1)
 
 [Test ‘Quick SMS Message’](#test-quick-sms-message)
+
+# Change Log
+
+|Change Title|Date|Details|
+|:---|:---:|:---|
+|Abstract OAuth Flow|2/16/24|Abstracted OAuth token function into its own subflow, called from parent flows.  Much simpler OAuth configuration across multiple flows.|
+
 
 # Solution Goals
 
@@ -148,7 +157,7 @@ This solution requires a few variables to be populated across different systems.
 
 An OAuth token is required to perform API operations for JDS event injection and other functionalities.
 
-Important Note: OAuth tokens created may only last for a single day. Be sure to re-populate your token in your flows right before your customer demo to avoid failures. This will be described in a later portion of this document. Alternatively, set up a [token store](https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/token-management-samples/token-service-sample) using the [tutorial video](https://app.vidcast.io/share/ed971770-49bb-47e5-96d0-7c920074fd53) to automatically manage the tokens from flows.
+Important Note: This demo relies upon having a token store set up, as OAuth tokens created may only last for a few hours. Using a token store will eliminate the need to manually populate a new OAuth token in each flow every 12 hours, but requires set up of its own. Set up a [token store](https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/token-management-samples/token-service-sample) using the [tutorial video](https://app.vidcast.io/share/ed971770-49bb-47e5-96d0-7c920074fd53) to automatically manage the tokens from flows.  If you choose not to use a token store, the appropriate changes to manually populate tokens will be listed where relevant.
 
 ## 
 
@@ -287,11 +296,31 @@ Now upload your desktop layout to WxCC and assign it to an agent you want to tes
 
 ## Create Flows In Webex
 
-The next step is to create the flows within Webex. There are two flows to implement: Payment Due Workflow and Payment Confirmed Workflow.
+The next step is to create the flows within Webex. There are three flows to implement: One flow that retrieves a valid OAuth token, a Payment Due Workflow and Payment Confirmed Workflow.
 
+### Get OAuth Token Workflow
+
+1. Log into Connect and create a new service called “PaymentCollection”.
+2. Go to Flows and create a flow. Name it GetOAuthToken and upload the CCEP_GetOAuthToken.workflow file.
+3. A configuration page will appear titled “Configure Webhook”. Choose the box for “Create new event”, name it “CCEP_GetOAuthToken” and populate the sample input with the below JSON. Click the Parse button, then click Save.
+
+    {
+
+    "hook": "null"
+
+
+    }
+
+4. Click the cog in the top right and open the custom variables page.  If you are using the token service mentioned earlier, populate the Token-Service-URL and x-token-passphrase.  If you are not using the token service, populate the StaticToken with a valid OAuth token using the next two steps, and remember to change it every 12 hours. **Do not populate the JDSToken Variable**  Save and publish the workflow, and skip the next two steps if you are using a token store.
+5. Go to postman, click the “CCEP Payment Collection” collection, and then the Authorization tab. In the “Current Token” area, notice that the token expiry time is listed. If it is before your demo will happen, make sure to refresh the token at a time that gives you a valid token for the demo. Next, click the drop-down, and then manage tokens.  
+      
+    ![](Images/8729748174f57a05fc6a5f05180c1efe.png)
+6. Choose your “payment Collection” token, copy out the access token, and paste it into the “StaticToken” custom variable field within Webex Connect. Ensure you do not have any whitespace or carriage returns as part of the pasted string. Now save the custom variables in Webex Connect, save the flow, and make live.  
+      
+    ![](Images/d5ea153af3dd91ac1e0f7718750ea87f.png)
 ### Payment Due Workflow
 
-1.  Log into Connect and create a new service called “PaymentCollection”.
+1.  Log into Connect and open the service “PaymentCollection”.
 2.  Go to Flows and create a flow. Name it PaymentDue and upload the CCEP_PaymentDue.workflow file.
 3.  A configuration page will appear titled “Configure Webhook”. Choose the box for “Create new event”, name it “CCEP_Paymentdue” and populate the sample input with the below JSON. Click the Parse button, copy the webhook URL into the [required info table.](#required-info) Click save.  
     {
@@ -321,13 +350,7 @@ The next step is to create the flows within Webex. There are two flows to implem
 6.  Next, we will set up some debugging so we can see the flow working. Open a new tab to https://webhook.site/ and copy out the Unique URL. Populate it in the [required info table.](#required-info) You can create your own nodes within the flows we will set up to send debugging information to webhook.site in order to troubleshoot the flows if they are not working correctly.
 7.  There is a Glitch site that has some back-end code we need to use here. We will configure fully later, for now, open [https://glitch.com/edit/\#!/swift-eight-cat](https://glitch.com/edit/#!/swift-eight-cat) and click the remix button. You will receive a new URL. Copy \*Only\* the site identifier into the [required info table](#required-info) (E.g swift-eight-cat.glitch.me)
 8.  Now click the settings cog in the top right of the Webex Connect flow builder. Go to the “Custom variables” tab. Populate all the fields except for JDSToken from the [required info table.](#required-info) and leave the page open.
-9.  Go to postman, click the “CCEP Payment Collection” collection, and then the Authorization tab. In the “Current Token” area, notice that the token expiry time is listed. If it is before your demo will happen, make sure to refresh the token at a time that gives you a valid token for the demo. Next, click the drop-down, and then manage tokens.  
-      
-    ![A screenshot of a web page Description automatically generated](Images/8729748174f57a05fc6a5f05180c1efe.png)
-10. Choose your “payment Collection” token, copy out the access token, and paste it into the “JDSToken” custom variable field within Webex Connect. Ensure you do not have any whitespace or carriage returns as part of the pasted string. Now save the custom variables in Webex Connect, save the flow, and make live.  
-      
-    ![](Images/d5ea153af3dd91ac1e0f7718750ea87f.png)
-
+9. Double click the second node in the flow "Call Flow" and set the workflow name to the OAuth flow you created earlier.  Node type should be --All-- and the Node Name should be something like "Configure Webhook-2".  Save the flow, and make live.
 *  
 *
 
@@ -348,7 +371,7 @@ The next step is to create the flows within Webex. There are two flows to implem
 
     ![](Images/2741e03b09de76ebb0548d43b17f820d.png)
 
-1.  Now, check your agent desktop, choose the JDS widget, and enter the number of the consumer. In this example, +12099641260. You should see the full stream of inbound and outbound SMS between connect and the user. If you do not, re-populate the JDS token in the custom variables of the Webex Connect flow using a fresh token retrieved from Postman and re-test. If it still does not work, use HTTP Post to webhook.site to debug. In this case, any time an agent speaks to a customer, the JDS widget would automatically load this full history.
+1.  Now, check your agent desktop, choose the JDS widget, and enter the number of the consumer. In this example, +12099641260. You should see the full stream of inbound and outbound SMS between connect and the user. If you do not, check your debugging using webhook.site or similar, troubleshoot and re-test. In this case, any time an agent speaks to a customer, the JDS widget would automatically load this full history.
 
     ![](Images/0acc458a2fa075eaa7ee3fcc36ae2720.png)
 
@@ -364,8 +387,8 @@ The next step is to create the flows within Webex. There are two flows to implem
 
     }
 
-2.  Open the SMS Node and change the “From Number” to your SMS Number.
-3.  Open the custom variables and populate all the fields from the [required info table](#required-info).
+2.  Open the SMS Node and change the “From Number” to your SMS Number. Open the "Call Flow" Node and set the details to call your OAuth Token flow.
+3.  Open the custom variables and populate all the fields from the [required info table](#required-info).  **Do not populate the JDSToken field**
 4.  Save and publish the flow.
 5.  Open your Glitch site and select the script.js file. Around line 33, you will see a statement like below. Change the address to the webhook for the paymentconfirmed flow.  
     url: 'https://hooks.us.webexconnect.io/events/85P18MBEYD',
@@ -406,8 +429,9 @@ The quick SMS function allows you to send an SMS to the person you are currently
 
     ![A screenshot of a computer Description automatically generated](Images/2ad845c22f0130b08fdef0b2f0759ff5.png)
 
-3.  Double click the SMS Node and change the “From number” to the correct one. Save the node.
-4.  Open the custom variables screen from the cog in the top right and populate them all from the [required info table](#required-info). Remember you may need to get a new JDSToken from Postman if you generated it over 12 hours ago.  
+3.  Double click the SMS Node and change the “From number” to the correct one. Save the node.  Double click the "Call Flow" Node and point it at your OAuth Token flow.
+4.  Open the custom variables screen from the cog in the top right and populate them all from the [required info table](#required-info). **Do not populate the JDSToken variable**
+
     ![A screenshot of a computer Description automatically generated](Images/afe197af1b1b531f7d393c0aada03638.png)
 5.  Save the flow and make live.
 6.  Open your Agent Desktop layout in your chosen code editor, and find and replace the text \<\<GLTICHID\>\> with your GlitchID From the [required info table.](#required-info)
