@@ -27,7 +27,7 @@ Click to open the video!
 # Technical Solution Overview & Demo
 
 <p align="center">
-   <a href="https://app.vidcast.io/share/8452da44-1b66-43b0-8d54-3fddc59b5683" target="_blank">
+   <a href="https://app.vidcast.io/share/ef0875dd-74e3-409c-b761-bd1c8c22ec83" target="_blank">
        <img src="Images/PayCollection_Techdemo.png" alt="Payment-Collection-Tech-Demo"  width="100%" height="100%"/>
     </a>
 </p>
